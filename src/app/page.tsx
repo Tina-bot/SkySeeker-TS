@@ -58,7 +58,7 @@ export default function Home() {
     };
   }
 
-  const { isLoading, error, data } = useQuery<WeatherData>('repoData',
+  /*const { isLoading, error, data } = useQuery<WeatherData>('repoData',
     async () => {
       const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=${process.env.API_WEATHER}`)
       return data;
@@ -66,7 +66,7 @@ export default function Home() {
 
   console.log("data", data?.city);
 
-  if (isLoading) return 'Loading...'
+  if (isLoading) return 'Loading...'*/
 
 
   return (
