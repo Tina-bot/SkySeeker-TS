@@ -12,7 +12,7 @@ export default function Searchbox(props: Props) {
     return (
         <form action="" onSubmit={props.onSubmit} className='flex relative items-center border-2 bg-white rounded-full active:border-violet-400 focus-within:rounded-full focus:border-2 focus-within:border-violet-400'>
             <input type="text"
-                value={props.value}
+                defaultValue={props.value}
                 onChange={props.onChange}
                 className='h-8 outline-none ml-2  '
                 placeholder=' Location..' />
