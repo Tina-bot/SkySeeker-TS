@@ -9,7 +9,7 @@ type Props = {}
 
 export default function Navbar({ }: Props) {
     return (
-        <nav className='shadow-sm sticky top-0 left-0 z-50 bg-violet-100'>
+        <nav className='shadow-sm sticky top-0 left-0 z-50 bg-violet-100 w-full  sm:w-17'>
             <div className='h-[120px] w-full flex justify-between items-center max-w-7xl px-12 max-auto'>
                 <span className='flex items-center justify-center gap-2'>
                     <GiNightSky className='text-6xl mt-1 text-violet-400' />
