@@ -5,6 +5,7 @@ import { useQuery } from "react-query";
 import { format, parseISO } from "date-fns";
 import { KelvinToCelsius } from "@/utils/KelvinToCelsius";
 import { useEffect } from "react";
+import WeatherIcon from "@/components/WeatherIcon";
 
 interface WeatherDetail {
   dt: number;
@@ -139,6 +140,7 @@ export default function Home() {
                       <p className="whitespace-nowrap">
                         {format(parseISO(d.dt_txt), "h:mm a")}
                       </p>
+                       <WeatherIcon iconName={d.weather[0].icon} />
                       <p>{KelvinToCelsius(d?.main.temp ?? 0)}°</p>
 
                     </div>
