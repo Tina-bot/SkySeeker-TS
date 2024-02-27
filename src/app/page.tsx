@@ -2,10 +2,15 @@
 import Navbar from "@/components/Navbar";
 import axios from "axios";
 import { useQuery } from "react-query";
-import { format, parseISO } from "date-fns";
+import { format, fromUnixTime, parseISO } from "date-fns";
 import { KelvinToCelsius } from "@/utils/KelvinToCelsius";
 import { useEffect } from "react";
 import WeatherIcon from "@/components/WeatherIcon";
+import { DayOrNightIcon } from "@/utils/DayOrNightIcon";
+import Forecast from "@/components/Forecast";
+import WeatherDetails from "@/components/WeatherDetails";
+import { metersToKilometers } from "@/utils/metersToKilometers";
+import { convertWindSpeed } from "@/utils/ConvertWindSpeed";
 
 interface WeatherDetail {
   dt: number;
@@ -107,8 +112,8 @@ export default function Home() {
               </p>
             </h2>
             <div
-              className='w-full bg-violet-100 border rounded-xl flex py-4 shadow-sm'>
-              <div className="gap-10 px-6 items-center">
+              className='w-full bg-violet-50 border rounded-xl flex py-4 shadow-sm flex-col'>
+              <div className="gap-10 px-6 items-center flex">
 
                 <div className="flex flex-col px-4">
                   <span className="text-5xl">
@@ -136,23 +141,43 @@ export default function Home() {
 
                 <div className="flex gap-10 sm:gap-16 w-full max-w-full justify-between pr-3 overflow-x-auto">
                   {data?.list.map((d, i) => (
-                    <div key={i} className="flex flex-col justify-between gap-2 items-center text-xs font-semibold">
+                    <div key={i} className="flex flex-col justify-between gap-2 items-center text-xs font-semibold mb-4">
                       <p className="whitespace-nowrap">
                         {format(parseISO(d.dt_txt), "h:mm a")}
                       </p>
-                       <WeatherIcon iconName={d.weather[0].icon} />
+                      <WeatherIcon iconName={DayOrNightIcon(d.weather[0].icon, d.dt_txt)} />
                       <p>{KelvinToCelsius(d?.main.temp ?? 0)}°</p>
 
                     </div>
                   ))}
                 </div>
-
-
-
               </div>
-
             </div>
           </div>
+          <div className="flex gap-4 pt-2">
+            <div className="bg-violet-50 border rounded-xl flex py-4 shadow-sm w-fit justify-center flex-col px-4 items-center">
+              <p className="capitalize text-center">{firstData?.weather[0].description}</p>
+              <WeatherIcon iconName={DayOrNightIcon(firstData?.weather[0].icon ?? "", firstData?.dt_txt ?? "")} />
+
+            </div>
+            <div className="w-full bg-violet-400 border rounded-xl flex py-4 shadow-sm px-6 justify-between gap-4 overflow-x-auto">
+              <WeatherDetails
+                visability={metersToKilometers(
+                  firstData?.visibility ?? 10000
+                )}
+                airPressure={`${firstData?.main.pressure} hPa`}
+                humidity={`${firstData?.main.humidity}%`}
+                sunrise={format(fromUnixTime(data?.city.sunrise ?? 1702949452), "H:mm")}
+                sunset={format(fromUnixTime(data?.city.sunset ?? 1702517657), "H:mm")}
+                windSpeed={convertWindSpeed(firstData?.wind.speed ?? 1.64)}
+              />
+            </div>
+
+          </div>
+        </section>
+        <section className="flex w-full flex-col gap-4 bg-violet-50">
+          <p className="text 2xl"> Forecast (7Days)  </p>
+          <Forecast />
         </section>
       </main>
     </div>
