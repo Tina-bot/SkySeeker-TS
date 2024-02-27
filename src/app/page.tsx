@@ -121,7 +121,7 @@ export default function Home() {
       <main className="px-3 max-7xl mx-auto flex flex-col gap-9 w-full pb-10 pt-4">
         <section>
           <div>
-            <h2 className="flex gap-1 text-2xl items-end">
+            <h2 className="flex gap-1 text-2xl items-end pb-2">
               <p>{format(parseISO(firstData?.dt_txt ?? ""), "EEEE")}</p>
               <p className="text-lg">
                 ({format(parseISO(firstData?.dt_txt ?? ""), "dd.MM.yyyy")})
@@ -191,7 +191,7 @@ export default function Home() {
 
           </div>
         </section>
-        <section className="flex w-full flex-col gap-4 bg-violet-50 p-4 rounded-lg ">
+        <section className="flex w-full flex-col gap-4 bg-violet-200 rounded-lg ">
           <p className="text 2xl"> Forecast (7Days)  </p>
           {firstDataForEachDate.map((d, i) => (
             <Forecast
