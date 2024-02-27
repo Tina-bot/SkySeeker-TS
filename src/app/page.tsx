@@ -84,6 +84,22 @@ export default function Home() {
   console.log("data", data, "url", process.env.NEXT_PUBLIC_API_WEATHER);
   const firstData = data?.list[0];
   console.log("firstData", firstData);
+  const uniqueDates = [
+    ...new Set(
+      data?.list.map(
+        (entry) => new Date(entry.dt * 1000).toISOString().split("T")[0]
+      )
+    )
+  ];
+
+  const firstDataForEachDate = uniqueDates.map((date) => {
+    return data?.list.find((entry) => {
+      const entryDate = new Date(entry.dt * 1000).toISOString().split("T")[0];
+      const entryTime = new Date(entry.dt * 1000).getHours();
+      return entryDate === date && entryTime >= 6;
+    });
+  });
+
 
   if (isLoading)
     return (
@@ -160,7 +176,7 @@ export default function Home() {
               <WeatherIcon iconName={DayOrNightIcon(firstData?.weather[0].icon ?? "", firstData?.dt_txt ?? "")} />
 
             </div>
-            <div className="w-full bg-violet-400 border rounded-xl flex py-4 shadow-sm px-6 justify-between gap-4 overflow-x-auto">
+            <div className="w-full bg-violet-400 text-violet-50 border rounded-xl flex py-4 shadow-sm px-6 justify-between gap-4 overflow-x-auto">
               <WeatherDetails
                 visability={metersToKilometers(
                   firstData?.visibility ?? 10000
@@ -175,9 +191,33 @@ export default function Home() {
 
           </div>
         </section>
-        <section className="flex w-full flex-col gap-4 bg-violet-50">
+        <section className="flex w-full flex-col gap-4 bg-violet-50 p-4 rounded-lg ">
           <p className="text 2xl"> Forecast (7Days)  </p>
-          <Forecast />
+          {firstDataForEachDate.map((d, i) => (
+            <Forecast
+              key={i}
+              description={d?.weather[0].description ?? ""}
+              weatehrIcon={d?.weather[0].icon ?? "01d"}
+              date={d ? format(parseISO(d.dt_txt), "dd.MM") : ""}
+              day={d ? format(parseISO(d.dt_txt), "dd.MM") : "EEEE"}
+              feels_like={d?.main.feels_like ?? 0}
+              temp={d?.main.temp ?? 0}
+              temp_max={d?.main.temp_max ?? 0}
+              temp_min={d?.main.temp_min ?? 0}
+              airPressure={`${d?.main.pressure} hPa `}
+              humidity={`${d?.main.humidity}% `}
+              sunrise={format(
+                fromUnixTime(data?.city.sunrise ?? 1702517657),
+                "H:mm"
+              )}
+              sunset={format(
+                fromUnixTime(data?.city.sunset ?? 1702517657),
+                "H:mm"
+              )}
+              visability={`${metersToKilometers(d?.visibility ?? 10000)} `}
+              windSpeed={`${convertWindSpeed(d?.wind.speed ?? 1.64)} `}
+            />
+          ))}
         </section>
       </main>
     </div>
