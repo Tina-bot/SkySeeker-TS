@@ -30,6 +30,7 @@ The application uses the [OpenWeather API](https://openweathermap.org/api) to fe
 You can see a live demo of the application at [https://sky-seeker-ts.vercel.app/](https://sky-seeker-ts.vercel.app/).
 
 ## To-Do ✅
+- [ ] Implement Mobile Version: Create a mobile-friendly version of the application for better accessibility on smaller screens.
 - [ ] Fix the Search Box: The list of suggestions is displayed incorrectly and repeated, and it appears at an incorrect angle.
 <img width="669" alt="Captura de pantalla 2024-02-28 a la(s) 18 50 58" src="https://github.com/Tina-bot/SkySeeker-TS/assets/72955349/34a310b8-7d58-4337-b654-81e631222c4f">
 
