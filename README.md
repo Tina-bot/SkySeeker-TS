@@ -1,37 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![Skyseeker](https://64.media.tumblr.com/0b35d8c408aadf4a3a6f2de0928d3705/399773ede13f1e1e-57/s1280x1920/1f81a8f1e8de2600590a99aa77d8ebc95167f2e9.pnj)
 
-## Getting Started
+# Skyseeker ☁️
 
-First, run the development server:
+![img](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![img](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## What is it? 👀
+Skyseeker is a web application developed using TypeScript and Next.js. Its main functionality is to provide weather information through API calls. Additionally, it displays the current weather, hourly forecast, and the weather forecast for the next 7 days based on the user's location. Skyseeker also has the ability to obtain the user's location through the browser and display the current weather in that location.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Dependencies 📦
+- [date-fns](https://github.com/date-fns/date-fns)
+- [jotai](https://github.com/pmndrs/jotai)
+- [axios](https://github.com/axios/axios)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Screenshots 📷
+<img width="685" alt="Skyseeker Screenshot" src="https://github.com/Tina-bot/SkySeeker-TS/assets/72955349/0818ec6b-4c1b-449e-ba52-235c6f15c564">
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Usage 🚀
+1. Clone this repository.
+2. Install dependencies using `npm install`.
+3. Start the application with `npm run dev`.
+4. Visit `http://localhost:3000` in your browser.
 
-To learn more about Next.js, take a look at the following resources:
+## API Used 📄
+The application uses the [OpenWeather API](https://openweathermap.org/api) to fetch weather data.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Live Demo 🌐
+You can see a live demo of the application at [https://sky-seeker-ts.vercel.app/](https://sky-seeker-ts.vercel.app/).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## To-Do ✅
+- [ ] Fix the Search Box: The list of suggestions is displayed incorrectly and repeated, and it appears at an incorrect angle.
+<img width="669" alt="Captura de pantalla 2024-02-28 a la(s) 18 50 58" src="https://github.com/Tina-bot/SkySeeker-TS/assets/72955349/34a310b8-7d58-4337-b654-81e631222c4f">
 
-## Deploy on Vercel
+<hr/>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![Skyseeker](https://64.media.tumblr.com/0b35d8c408aadf4a3a6f2de0928d3705/399773ede13f1e1e-57/s1280x1920/1f81a8f1e8de2600590a99aa77d8ebc95167f2e9.pnj)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# SkySeeker-TS
