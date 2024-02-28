@@ -33,7 +33,8 @@ You can see a live demo of the application at [https://sky-seeker-ts.vercel.app/
 - [ ] Fix the Search Box: The list of suggestions is displayed incorrectly and repeated, and it appears at an incorrect angle.
 <img width="669" alt="Captura de pantalla 2024-02-28 a la(s) 18 50 58" src="https://github.com/Tina-bot/SkySeeker-TS/assets/72955349/34a310b8-7d58-4337-b654-81e631222c4f">
 
-<hr/>
+<br/>
+<br/>
 
 ![Skyseeker](https://64.media.tumblr.com/0b35d8c408aadf4a3a6f2de0928d3705/399773ede13f1e1e-57/s1280x1920/1f81a8f1e8de2600590a99aa77d8ebc95167f2e9.pnj)
 
