@@ -6,7 +6,7 @@
 ![img](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 
 ## What is it? 👀
-SkySeeker is a web application developed using TypeScript and Next.js. </p> Its main functionality is to provide weather information through API calls. Additionally, it displays the current weather, hourly forecast, and the weather forecast for the next 7 days based on the user's location. </p> SkySeeker also has the ability to obtain the user's location through the browser and display the current weather in that location.
+SkySeeker is a web application developed using TypeScript and Next.js. </p> Its main functionality is to provide weather information through API calls. Additionally, it displays the current weather, hourly forecast, and the weather forecast for the next 7 days based on the user's location input. </p> SkySeeker also has the ability to obtain the user's location through the browser and display the current weather in that location.
 
 ## Dependencies 📦
 - [date-fns](https://github.com/date-fns/date-fns)
