@@ -4,13 +4,15 @@ import axios from "axios";
 import { useQuery } from "react-query";
 import { format, fromUnixTime, parseISO } from "date-fns";
 import { KelvinToCelsius } from "@/utils/KelvinToCelsius";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import WeatherIcon from "@/components/WeatherIcon";
 import { DayOrNightIcon } from "@/utils/DayOrNightIcon";
 import Forecast from "@/components/Forecast";
 import WeatherDetails from "@/components/WeatherDetails";
 import { metersToKilometers } from "@/utils/metersToKilometers";
 import { convertWindSpeed } from "@/utils/ConvertWindSpeed";
+import { loadingCityAtom, placeAtom } from "./atom";
+import { useAtom } from "jotai";
 
 interface WeatherDetail {
   dt: number;
@@ -69,17 +71,18 @@ interface WeatherData {
 
 
 export default function Home() {
+const [place, setPlace] = useAtom(placeAtom);
 
   const { isLoading, error, data, refetch } = useQuery<WeatherData>("repoData",
     async () => {
       const { data } = await axios.get(
-        `https://api.openweathermap.org/data/2.5/forecast?q=Buenos+Aires,ar&appid=${process.env.NEXT_PUBLIC_API_WEATHER}&cnt=56`
+        `https://api.openweathermap.org/data/2.5/forecast?q=${place}&appid=${process.env.NEXT_PUBLIC_API_WEATHER}&cnt=56`
       );
       return data;
     });
   useEffect(() => {
     refetch();
-  }, [refetch]);
+  }, [place, refetch]);
 
   console.log("data", data, "url", process.env.NEXT_PUBLIC_API_WEATHER);
   const firstData = data?.list[0];
@@ -117,8 +120,8 @@ export default function Home() {
 
   return (
     <div className='flex flex-col gap-4 bg-violet-200 min-h-screen overflow-hidden'>
-      <Navbar />
-      <main className="px-3 max-7xl mx-auto flex flex-col gap-9 w-full pb-10 pt-4">
+      <Navbar location={data?.city.name}/>
+      <main className="px-12 max-7xl mx-auto flex flex-col gap-9 w-full pb-10 pt-4">
         <section>
           <div>
             <h2 className="flex gap-1 text-2xl items-end pb-2">
